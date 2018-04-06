@@ -9,7 +9,6 @@ import java.util.Queue;
 
 /**
  * LC 98
- *
  */
 public class ValidateBST {
     class Instruction{
