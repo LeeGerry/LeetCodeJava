@@ -50,4 +50,8 @@ public class ConvertSortedListToBST {
         node.right = toBST(slow.next, tail);
         return node;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

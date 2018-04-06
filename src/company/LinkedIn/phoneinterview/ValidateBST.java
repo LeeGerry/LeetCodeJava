@@ -21,7 +21,7 @@ public class ValidateBST {
     }
 
     public boolean valid(TreeNode root) {
-        int preValue = Integer.MIN_VALUE;
+        Long preValue = Long.MIN_VALUE;
         if (root == null)   return true;
         Deque<Instruction> q = new ArrayDeque<>();
         q.offerFirst(new Instruction(0, root));
@@ -29,15 +29,17 @@ public class ValidateBST {
             Instruction current = q.pollFirst();
             if (current == null)    continue;
             if (current.code == 1) {
-                if (current.node.val < preValue)    return false;
-                else preValue = current.node.val;
+                if (current.node.val <= preValue)    return false;
+                else preValue = (long)current.node.val;
             } else {
                 if (current.node.right != null)
                     q.offerFirst(new Instruction(0, current.node.right));
+                q.offerFirst(new Instruction(1, current.node));
                 if (current.node.left != null)
-                    q.offerFirst(new Instruction(1, current.node.left));
+                    q.offerFirst(new Instruction(0, current.node.left));
             }
         }
         return true;
     }
+
 }
